@@ -497,6 +497,14 @@ config PRG32_PIN_BUZZER
     int "Buzzer GPIO"
     default -1
 
+config PRG32_PS2KBD_PIN_DATA
+    int "PS/2 Keyboard Data GPIO"
+    default -1
+
+config PRG32_PS2KBD_PIN_CLOCK
+    int "PS/2 Keyboard Clock GPIO"
+    default -1
+
 config PRG32_AUDIO_I2S_BCLK_GPIO
     int "I2S BCLK GPIO"
     depends on PRG32_AUDIO_ENABLED

@@ -55,6 +55,7 @@ idf_component_register(
         "prg32_random.c"
         "prg32_multiplayer.c"
         "prg32_multiplayer_wire.c"
+        "prg32_ps2kbd.c"
         "prg32_qemu_input.c"
         "prg32_sprite.c"
         "prg32_setup_multiplayer.c"

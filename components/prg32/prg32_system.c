@@ -18,6 +18,7 @@ void prg32_display_log_memory(const char *checkpoint);
 void prg32_input_init(void);
 void prg32_buzzer_init(void);
 void prg32_abi_exports_keep(void);
+void prg32_ps2kbd_init();
 
 #ifdef CONFIG_HEAP_TASK_TRACKING
 #include "esp_heap_caps.h"
@@ -1324,6 +1325,7 @@ void prg32_init(void) {
   PRG32_MEM_CHECKPOINT("prg32_splash");
   printf("prg32_init => prg32_input_init()\n");
   prg32_input_init();
+  prg32_ps2kbd_init();
   PRG32_MEM_CHECKPOINT("prg32_input");
 #ifdef PRG32_STORE_SERVER_URL
   char current_url[PRG32_STORE_URL_MAX_LEN];
