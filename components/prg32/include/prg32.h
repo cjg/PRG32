@@ -744,6 +744,13 @@ void prg32_memory_log_stats(void);
  */
 uint32_t prg32_random_number(uint32_t min, uint32_t max);
 
+/** Return key from PS/2 keyboard, the low-byte indicates the main key, the high-byte if set indicates that one or more
+ * modifiers were in use.
+ *
+ * Returns 0 if no key was pressed, or if just a modifier (CTRL, ALT, SHIFT is pressed).
+ */
+uint16_t prg32_ps2kbd_read_key(void);
+
 #ifdef __cplusplus
 }
 #endif

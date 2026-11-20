@@ -266,7 +266,7 @@ uint32_t prg32_ps2kbd_controller_read() {
     return v;
 }
 
-ps2kbd_keycode_t prg32_ps2kbd_read_key() {
+uint16_t prg32_ps2kbd_read_key(void) {
     if (!initialized) {
         return 0;
     }

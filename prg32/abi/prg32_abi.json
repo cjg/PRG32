@@ -1011,6 +1011,13 @@
       "args": [],
       "feature": "core",
       "notes": "Return 1 when an analog stick is sampled, 0 when axis values come from digital directions."
+    },
+    {
+      "name": "prg32_ps2kbd_read_key",
+      "return": "uint16_t",
+      "args": [],
+      "feature": "core",
+      "notes": "Read a keypress from the PS/2 keyboard."
     }
   ]
 }

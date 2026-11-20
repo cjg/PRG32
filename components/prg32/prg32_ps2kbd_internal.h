@@ -19,7 +19,4 @@ void prg32_ps2kbd_init();
 // enter and space are mapped to 'START' and 'ESC' is mapped to 'SELECT'
 uint32_t prg32_ps2kbd_controller_read();
 
-// return one by one the keys pressed
-ps2kbd_keycode_t prg32_ps2kbd_read_key();
-
 #endif

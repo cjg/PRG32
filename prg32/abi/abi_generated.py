@@ -2,7 +2,7 @@
 
 ABI_MAJOR = 1
 ABI_MINOR = 8
-ABI_HASH = 0x71b93e23
+ABI_HASH = 0xfb21bcf1
 COMPATIBLE_ABI_HASHES = [6563778, 1810294992, 638542134, 3011795237]
 IMPORT_NAMES = [
     'prg32_ticks_ms',
@@ -149,6 +149,7 @@ IMPORT_NAMES = [
     'prg32_input_axis_y',
     'prg32_input_axes_raw',
     'prg32_input_has_analog',
+    'prg32_ps2kbd_read_key',
 ]
 
 FEATURE_BITS = {
