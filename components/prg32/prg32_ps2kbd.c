@@ -30,6 +30,7 @@ static volatile uint32_t irq_count = 0;
 static volatile uint8_t last_byte_rx;
 
 // keymap from scancode to keycode, just uppercase is fine for now
+#if 0
 static const ps2kbd_keycode_t keymap[] = {
     0, 0 /*F9*/, 0, 0 /*F5*/, 0 /*F3*/, 0 /*F1*/, 0 /*F2*/, 0 /*F12*/,
     0, 0 /*F10*/, 0 /*F8*/, 0 /*F6*/, 0 /*F4*/, 0 /*TAB*/, '~', 0,
@@ -49,6 +50,27 @@ static const ps2kbd_keycode_t keymap[] = {
     0 /*F11*/, '+', '3', '-', '*', '9', 0 /*SCROLL*/, 0,
     0, 0, 0, 0 /*F7*/
 };
+#else
+static const ps2kbd_keycode_t keymap[] = {
+    0, 0 /*F9*/, 0, 0 /*F5*/, 0 /*F3*/, 0 /*F1*/, 0 /*F2*/, 0 /*F12*/,
+    0, 0 /*F10*/, 0 /*F8*/, 0 /*F6*/, 0 /*F4*/, 0 /*TAB*/, '~', 0,
+    0, 0 /*Lalt*/, 0 /*Lshift*/, 0, 0 /*Lctrl*/, 'Q', '!', 0,
+    0, 0, 'Z', 'S', 'A', 'W', '@', 0,
+    0, 'C', 'X', 'D', 'E', '$', '#', 0,
+    0, ' ', 'V', 'F', 'T', 'R', '%', 0,
+    0, 'N', 'B', 'H', 'G', 'Y', '^', 0,
+    0, 0, 'M', 'J', 'U', '&', '*', 0,
+    0, ',', 'K', 'I', 'O', ')', '(', 0,
+    0, '.', '?', 'L', ':', 'P', '_', 0,
+    0, 0, '"', 0, '{', '+', 0, 0,
+    0 /*CapsLock*/, 0 /*Rshift*/, PS2KBD_ENTER, '}', 0, '|', 0, 0,
+    0, 0, 0, 0, 0, 0, 0 /*backspace*/, 0,
+    0, '1', 0, '4', '7', 0, 0, 0,
+    '0', '.', '2', '5', '6', '8', PS2KBD_ESC, 0 /*NumLock*/,
+    0 /*F11*/, '+', '3', '-', '*', '9', 0 /*SCROLL*/, 0,
+    0, 0, 0, 0 /*F7*/
+};
+#endif
 
 static void IRAM_ATTR ps2kbd_clock_callback(void *arg) {
     // PS/2 keyboard sends a packet of 11 bit, one at each clock we keep the "next" bit index and the packet received
@@ -261,7 +283,7 @@ uint32_t prg32_ps2kbd_controller_read() {
         }
     }
     if (v != 0) {
-        ESP_LOGI(TAG, "read 0x%lx", v);
+        ESP_LOGI(TAG, "prg32_ps2kbd_controller_read() -> 0x%lx", v);
     }
     return v;
 }
@@ -287,6 +309,7 @@ uint16_t prg32_ps2kbd_read_key(void) {
     // ESP_LOGI(TAG, "read 0x%x (%c) after %lli us", key_code, (char) key_code, now - previous_key_ts);
     previous_key = key_code;
     previous_key_ts = now;
+    ESP_LOGI(TAG, "Key code 0x%x", key_code);
     return key_code;
 }
 

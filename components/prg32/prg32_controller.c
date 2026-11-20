@@ -175,12 +175,19 @@ static uint32_t read_gpio_buttons(void) {
     return v;
 }
 
+static uint32_t snapshot = 0;
+
+uint32_t prg32_controller_snapshot() {
+    return snapshot;
+}
+
 uint32_t prg32_controller_read(void) {
     uint32_t v = read_gpio_buttons();
     v |= prg32_qemu_input_read();
     v |= prg32_diag_input_state();
     v |= read_remote_keys();
     v |= prg32_ps2kbd_controller_read();
+    snapshot = v;
 #if PRG32_RESTART_HOTKEY_ENABLE
     if ((v & PRG32_RESTART_HOTKEY_P1) == PRG32_RESTART_HOTKEY_P1) {
         ESP_LOGE(TAG, "ABOUT TO esp_restart() from %s:%d\n", __FILE__, __LINE__);

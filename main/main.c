@@ -57,6 +57,8 @@ static char g_metrics_game_name[PRG32_CART_NAME_LEN] = "idle";
 static prg32_metrics_config_t g_metrics_config;
 static int g_metrics_run_active;
 
+extern uint32_t prg32_controller_snapshot();
+
 static void prg32_wait_for_frame_target(uint32_t *next_ms) {
   uint32_t now = prg32_ticks_ms();
   if (!next_ms) {
@@ -207,7 +209,7 @@ void app_main(void) {
       cart_generation = 0;
       next_frame_ms = prg32_ticks_ms();
     }
-    uint32_t input_snapshot = prg32_controller_read();
+    uint32_t input_snapshot = prg32_controller_snapshot();
 
     if (prg32_cart_is_loaded()) {
       uint32_t current_generation = prg32_cart_generation();
