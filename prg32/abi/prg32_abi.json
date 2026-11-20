@@ -1018,6 +1018,34 @@
       "args": [],
       "feature": "core",
       "notes": "Read a keypress from the PS/2 keyboard."
+    },
+    {
+      "name": "prg32_fs_open",
+      "return": "int8_t",
+      "args": ["const char *", "const char *"],
+      "feature": "core",
+      "notes": "Open a file"
+    },
+    {
+      "name": "prg32_fs_read",
+      "return": "int32_t",
+      "args": ["int8_t", "void *", "uint16_t"],
+      "feature": "core",
+      "notes": "Read from a file"
+    },
+    {
+      "name": "prg32_fs_write",
+      "return": "int32_t",
+      "args": ["int8_t", "const void *", "uint16_t"],
+      "feature": "core",
+      "notes": "Write to a file"
+    },
+    {
+      "name": "prg32_fs_close",
+      "return": "int",
+      "args": ["int8_t"],
+      "feature": "core",
+      "notes": "Write a file"
     }
   ]
 }

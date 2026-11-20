@@ -14,3 +14,4 @@ dependencies:
     require: no
     rules:
       - if: "target != esp32c3"
+  joltwallet/littlefs: "~=1.21.0"

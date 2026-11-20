@@ -41,6 +41,7 @@ idf_component_register(
         "prg32_diag.c"
         "prg32_http_games.c"
         "prg32_http_scores.c"
+        "prg32_fs.c"
         "prg32_gfx_sync.c"
         ${PRG32_DISPLAY_SRC}
         "prg32_input.c"

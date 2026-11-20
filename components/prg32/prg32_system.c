@@ -4,6 +4,7 @@
 #include "prg32.h"
 #include "prg32_led_internal.h"
 #include "prg32_config.h"
+#include "prg32_fs.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -1327,6 +1328,9 @@ void prg32_init(void) {
   prg32_input_init();
   prg32_ps2kbd_init();
   PRG32_MEM_CHECKPOINT("prg32_input");
+
+  prg32_fs_init();
+
 #ifdef PRG32_STORE_SERVER_URL
   char current_url[PRG32_STORE_URL_MAX_LEN];
   if (prg32_store_url_get(current_url, sizeof(current_url)) != 0) {

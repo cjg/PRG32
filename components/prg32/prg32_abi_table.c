@@ -161,5 +161,9 @@ const prg32_abi_table_t prg32_abi_table = {
         [PRG32_ABI_FN_PRG32_INPUT_AXES_RAW] = (const void *)prg32_input_axes_raw,
         [PRG32_ABI_FN_PRG32_INPUT_HAS_ANALOG] = (const void *)prg32_input_has_analog,
         [PRG32_ABI_FN_PRG32_PS2KBD_READ_KEY] = (const void *)prg32_ps2kbd_read_key,
+        [PRG32_ABI_FN_PRG32_FS_OPEN] = (const void *)prg32_fs_open,
+        [PRG32_ABI_FN_PRG32_FS_READ] = (const void *)prg32_fs_read,
+        [PRG32_ABI_FN_PRG32_FS_WRITE] = (const void *)prg32_fs_write,
+        [PRG32_ABI_FN_PRG32_FS_CLOSE] = (const void *)prg32_fs_close,
     },
 };

@@ -751,6 +751,53 @@ uint32_t prg32_random_number(uint32_t min, uint32_t max);
  */
 uint16_t prg32_ps2kbd_read_key(void);
 
+typedef enum {
+    PRG32_FS_OK = 0,
+    PRG32_FS_ERR_TOO_MANY_OPENFILES = -1,
+    PRG32_FS_ERR_FILE_NOT_FOUND = -2,
+    PRG32_FS_ERR_NAME_LENGTH = -3,
+    PRG32_FS_ERR_INVALID_FILE = -4,
+} prg32_fs_error_t;
+
+/**
+ * Open a file for reading or writing.
+ *
+ * Note the maximum length of the filename is of 12 characters, typically 8.3.
+ *
+ * @param filename the name of the file to open
+ * @param mode one of "r", "w", "rw"
+ * @return a file descriptor greater than 0 on success, or an error
+ */
+int8_t prg32_fs_open(const char *filename, const char *mode);
+
+/**
+ * Read from a file.
+ *
+ * @param fd the file descriptor
+ * @param buf the buffer where to store the data from the file
+ * @param count the number of bytes to read
+ * @return on success the number of bytes read (=>0) otherwise an error
+ */
+int32_t prg32_fs_read(int8_t fd, void *buf, uint16_t count);
+
+/**
+ * Write to a file.
+ *
+ * @param fd the file descriptor
+ * @param buf the buffer of the data to write
+ * @param count the number of bytes to write
+ * @return on success the number of bytes written otherwise an error
+ */
+int32_t prg32_fs_write(int8_t fd, const void *buf, uint16_t count);
+
+/**
+ * Close an open file.
+ *
+ * @param fd the file descriptor to close
+ * @return PRG32_FS_OK or an error
+ */
+prg32_fs_error_t prg32_fs_close(int8_t fd);
+
 #ifdef __cplusplus
 }
 #endif
