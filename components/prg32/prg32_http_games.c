@@ -10,6 +10,8 @@
 #include "esp_log.h"
 #include "esp_timer.h"
 #include "esp_vfs.h"
+#include "prg32_fs.h"
+#include "prg32_http_internal.h"
 
 #ifdef CONFIG_HEAP_TASK_TRACKING
 typedef struct {
@@ -30,7 +32,6 @@ static const char *TAG = "prg32_wifi";
 static httpd_handle_t server;
 
 /* POST /api/games streams the cartridge to flash through this buffer. */
-#define PRG32_HTTP_UPLOAD_CHUNK_BYTES 4096u
 enum {
     BMP_HEADER_SIZE = 54,
     BMP_DIB_SIZE = 40,
@@ -679,6 +680,16 @@ void prg32_scores_api_start(void) {
         .method = HTTP_GET,
         .handler = get_memory
     };
+
+    // persistent filesystem API
+    const httpd_uri_t upload_file = {
+        .uri = "/api/fs",
+        .method = HTTP_POST,
+        .handler = fs_upload_file_handler
+    };
+
+    ESP_ERROR_CHECK(httpd_register_uri_handler(server, &upload_file));
+
     ESP_ERROR_CHECK(httpd_register_uri_handler(server, &api_root));
     ESP_ERROR_CHECK(httpd_register_uri_handler(server, &api));
     ESP_ERROR_CHECK(httpd_register_uri_handler(server, &rt));

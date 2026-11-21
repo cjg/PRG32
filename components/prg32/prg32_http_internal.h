@@ -1,0 +1,10 @@
+//
+// Created by Giuseppe Coviello on 11/21/26.
+//
+
+#ifndef PRG32_PRG32_HTTP_INTERNAL_H
+#define PRG32_PRG32_HTTP_INTERNAL_H
+
+#define PRG32_HTTP_UPLOAD_CHUNK_BYTES 4096u
+
+#endif //PRG32_PRG32_HTTP_INTERNAL_H
